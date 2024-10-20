@@ -1,20 +1,22 @@
 language: python
 
-# python:
-#   - "3.10.5"  # Specify your Python version
+python:
+  - 3.9
 
 install:
-  - pip install -r requirements.txt  # Install dependencies
+  - pip install -r requirements.txt
+
+before_script: 
+  - python manage.py migrate
+  - python manage.py collectstatic --noinput
 
 script:
   - black --check .
-  - flake8 --max-line-length=150 .
+  - flake8 --max-line-length=92 .
   - coverage run manage.py test
-  - env
 
-after_success:
-  - coveralls  # Report coverage to Coveralls
-
+after_script:
+  - COVERALLS_REPO_TOKEN=BYePOCLwz7Dkx4G4v1ZJ0DZzVd4O1Eap0 coveralls
 
 deploy:
   provider: elasticbeanstalk
