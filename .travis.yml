@@ -1,19 +1,20 @@
 language: python
-python:
-  - "3.8"
-install:
-  - pip install -r requirements.txt
-  - pip install black flake8 coverage coveralls --no-deps
 
-before_script:
-  - python manage.py migrate
-  - python manage.py collectstatic --noinput
+# python:
+#   - "3.10.5"  # Specify your Python version
+
+install:
+  - pip install -r requirements.txt  # Install dependencies
+
 script:
   - black --check .
-  - flake8 .
-  - coverage run --source=mysite,polls manage.py test
+  - flake8 --max-line-length=150 .
+  - coverage run manage.py test
+  - env
+
 after_success:
-  - coveralls
+  - coveralls  # Report coverage to Coveralls
+
 
 deploy:
   provider: elasticbeanstalk
@@ -23,3 +24,5 @@ deploy:
   app: "mysite"
   env: "mysite-dev"
   bucket_name: "elasticbeanstalk-us-east-1-207567791591"
+  on:
+    branch: main
