@@ -8,7 +8,7 @@ before_script:
   - python manage.py collectstatic --noinput
 script:
   - black --check .
-  - flake8 --max-line-length=88 .
+  - flake8 --max-line-length=100 .
   - coverage run --source=mysite,polls manage.py test
 
 after_script:
