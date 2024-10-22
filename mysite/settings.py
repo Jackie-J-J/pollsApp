@@ -26,9 +26,9 @@ SECRET_KEY = "django-insecure-7(x(a#6eeuzvsegdprken*c5##p7#o_)3uh#zym2i&m!sm20&3
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "localhost",
+    "mysite-dev22223.us-east-1.elasticbeanstalk.com",  # Your Elastic Beanstalk domain
+    "localhost",  # For local testing
     "127.0.0.1",
-    "mysite-dev2222.us-east-1.elasticbeanstalk.com",  # Add your EBS domain here
 ]
 
 # Application definition
