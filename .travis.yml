@@ -23,4 +23,7 @@ deploy:
   env: "mysite-dev"
   bucket_name: "elasticbeanstalk-us-east-1-207567791591"
   on:
+    repo: Jackie-J-J/pollsApp
     branch: main
+  skip_cleanup: 'true'
+
